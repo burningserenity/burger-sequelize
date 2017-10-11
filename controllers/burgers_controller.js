@@ -1,10 +1,10 @@
 const express = require('express');
-const db = require('../models/burger.js');
+const db = require('../models');
 
 const router = express.Router();
 
 router.get("/", function(req, res) {
-    db.findAll().then(function(dbBurger) {
+    db.Burger.findAll().then(function(dbBurger) {
         console.log(dbBurger);
         var hbsObject = {burgers: dbBurger}
         res.render("index", hbsObject);
@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-    db.create({burger_name : req.body.name}).then(function(dbBurger) {
+    db.Burger.create({burger_name : req.body.name}).then(function(dbBurger) {
         res.redirect("/");
     });
 });
@@ -23,7 +23,7 @@ router.put("/:id", function(req, res) {
 
     console.log("condition", condition);
     
-    db.update({
+    db.Burger.update({
         devoured : req.body.devour,
     },{
             where: {

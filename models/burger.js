@@ -1,7 +1,6 @@
-const Sequelize = require('sequelize');
-var connection;
+//var connection;
 
-if (process.env.JAWSDB_URL) connection = new Sequelize({
+/*if (process.env.JAWSDB_URL) connection = new Sequelize({
     username: "csj4wx7xlw453vr6",
     password: "arco43mc4tyhfdzu",
     database: "rydr65yfgbwz8djt",
@@ -27,25 +26,26 @@ else {
             idle: 10000
         }
     });
+}*/
+
+module.exports = function(sequelize, DataTypes) {
+    var Burger = sequelize.define("Burger", {
+        burger_name : {
+            type: DataTypes.STRING,
+            allowNull: false,            
+        },
+        devoured : {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+        date : {
+            type: 'TIMESTAMP',
+            defaultValue: DataTypes.NOW
+        }
+    }, {
+        timestamps: false
+    });
+    return Burger;
 }
 
-var Burger = connection.define("Burger", {
-    burger_name : {
-        type: Sequelize.STRING,
-        allowNull: false,            
-    },
-    devoured : {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-    },
-    date : {
-        type: 'TIMESTAMP',
-        defaultValue: Sequelize.NOW
-    }
-}, {
-    timestamps: false
-});
 
-Burger.sync();
-
-module.exports = Burger;
