@@ -1,0 +1,21 @@
+body {
+    background-color: tan;
+}
+
+button {
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+input {
+    margin-top: 10px;
+}
+
+img {
+    border-style: groove;
+    border-width: 2px;
+    border-color: orangered;
+}
