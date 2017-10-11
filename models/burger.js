@@ -2,8 +2,16 @@ const Sequelize = require('sequelize');
 var connection;
 
 if (process.env.JAWSDB_URL) connection = new Sequelize({
-    use_env_variable: "JAWSDB_URL",
-    dialect: "mysql"
+    username: "csj4wx7xlw453vr6",
+    password: "arco43mc4tyhfdzu",
+    database: "rydr65yfgbwz8djt",
+    host: "xq7t6tasopo9xxbs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    dialect: "mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    }
 });
 
 else {
